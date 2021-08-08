@@ -4,10 +4,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -77,6 +83,36 @@ public class BaseClass {
 		  chromeOptions = new ChromeOptions();
 		  chromeOptions.addArguments("--disable-notifications");
 		  return chromeOptions;
+	}
+	
+	public WebElement webDriverWait4VisibilityOfEle(WebElement ele){
+		try {
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
+		} catch(StaleElementReferenceException e) {
+			e.printStackTrace();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();			
+		} catch (TimeoutException e) {
+			e.printStackTrace();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ele;
+	}
+	
+	public WebElement webDriverWait4ElementToBeClickable(WebElement ele){
+		try {
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele));
+		} catch(StaleElementReferenceException e) {
+			e.printStackTrace();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();			
+		} catch (TimeoutException e) {
+			e.printStackTrace();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ele;
 	}
 	
 	@AfterMethod

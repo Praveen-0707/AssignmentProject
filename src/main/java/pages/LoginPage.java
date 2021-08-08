@@ -1,10 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import base.BaseClass;
+import org.openqa.selenium.WebElement;
+//import base.BaseClass;
+import design.BrowserActions;
 
-public class LoginPage extends BaseClass {
+public class LoginPage extends BrowserActions {
 	
 	public LoginPage()
 	{
@@ -13,19 +13,32 @@ public class LoginPage extends BaseClass {
 	
 	public LoginPage enterUsername()
 	{
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("username")))).sendKeys("cypress@testleaf.com");
+		try {
+			WebElement ele = locateElement("id", "username");
+			type(ele, "cypress@testleaf.com");
+			System.out.println("Username entered");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
 	public LoginPage enterPassword()
 	{
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("password")))).sendKeys("Selbootcamp@1234");
+		try {
+			WebElement ele = locateElement("id", "password");
+			type(ele, "Selbootcamp@1234");
+			System.out.println("Password entered");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return this;
 	}
 	
 	public HomePage clickLogin()
 	{
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("Login")))).click();
+//		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("Login")))).click();
+		click(locateElement("id","Login"));
 		return new HomePage();
 	}
 }
