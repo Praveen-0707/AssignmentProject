@@ -28,9 +28,9 @@ public class HomePage extends BrowserActions {
 		return this;
 	}
 	
-	public SalesPage clickOnPartyConsent()
+	public SalesPage clickOnApp(String value)
 	{
-		click(locateElement("xpath","//p//mark[contains(text(),'Party Consent')]"));
+		click(locateElement("xpath","//p//mark[contains(text(),'"+value+"')]"));
 		return new SalesPage();
 	}
 	

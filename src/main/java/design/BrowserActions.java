@@ -5,10 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.JavascriptException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import base.BaseClass;
 
 public class BrowserActions extends BaseClass implements IBrowserActions{
@@ -94,6 +98,41 @@ public class BrowserActions extends BaseClass implements IBrowserActions{
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	public void clickByJS(WebElement ele) {
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		try {
+			js.executeScript("arguments[0].click();", ele);
+		} catch (JavascriptException e) {
+			e.printStackTrace();
+		} catch (WebDriverException e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	public void clickByActions(WebElement ele) {
+		Actions actions = new Actions(driver);
+		try {
+			actions.moveToElement(ele).click().perform();
+		} catch (ElementClickInterceptedException e) {
+			e.printStackTrace();
+		} catch (ElementNotInteractableException e) {
+			e.printStackTrace();
+		} catch (WebDriverException e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	public void sendkeysUsingActions(WebElement ele, Keys keyVal) {
+		try {
+			Actions actions = new Actions(driver);
+			actions.sendKeys(keyVal).perform();
+		} catch (InvalidElementStateException e) {
+			e.printStackTrace();
+		} catch (WebDriverException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String getText(WebElement ele) {	

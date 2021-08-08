@@ -17,7 +17,7 @@ public class DeletePartyConsent extends BaseClass {
 		.clickToggleButton()
 		.clickViewAll()
 		.searchApp("Party Consent")
-		.clickOnPartyConsent()
+		.clickOnApp("Party Consent")
 		.searchForPartyConsent(partyName)
 		.deletePartyConsent(partyName)
 		.deletePopUpConfirmation()
