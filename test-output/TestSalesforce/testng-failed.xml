@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [TestSalesforce]" guice-stage="DEVELOPMENT">
+  <parameter name="password" value="Selbootcamp@123"/>
+  <parameter name="url" value="https://login.salesforce.com/"/>
+  <parameter name="username" value="cypress@testleaf.com"/>
+  <test thread-count="5" name="Accounts(failed)">
+    <classes>
+      <class name="testNG.CreateNewWTGWithoutMandatoryField">
+        <methods>
+          <include name="login"/>
+          <include name="setFileName"/>
+          <include name="createWorkTypeGroup" invocation-numbers="0 1"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- testNG.CreateNewWTGWithoutMandatoryField -->
+    </classes>
+  </test> <!-- Accounts(failed) -->
+</suite> <!-- Failed suite [TestSalesforce] -->
