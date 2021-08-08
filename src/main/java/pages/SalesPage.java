@@ -72,6 +72,8 @@ public class SalesPage extends BrowserActions {
 			WebElement ele = locateElement("xpath","//input[@title='Search Accounts']");
 			clickByActions(ele);
 			sendkeysUsingActions(ele, Keys.ARROW_DOWN);
+			sendkeysUsingActions(ele, Keys.ARROW_DOWN);
+			Thread.sleep(1000);
 			sendkeysUsingActions(ele, Keys.ENTER);
 			Thread.sleep(1000);
 		} catch (Exception e) {

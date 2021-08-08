@@ -3,7 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test" verbose="5">
     <classes>
-      <class name="assignment.DeletePartyConsent"/>
+      <!-- <class name="assignment.DeletePartyConsent"/> -->
+      <class name="assignment.CreateContractWithoutMandatoryFields"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

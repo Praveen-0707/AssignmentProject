@@ -43,7 +43,7 @@ public class BaseClass {
 	@BeforeMethod
 	public void launchApp()
 	{
-		remoteRun = "true";
+		remoteRun = "false";
 
 		DesiredCapabilities dcaps = new DesiredCapabilities();
 		dcaps.setCapability("browserName", "chrome");
